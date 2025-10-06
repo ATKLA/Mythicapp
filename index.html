@@ -1,134 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Mythicapp - Learn Mythology</title>
-
-  <!-- SEO básico -->
-  <meta name="description" content="Mythicapp: SPA sin frameworks para aprender mitología (egipcia, griega, romana, vikinga, azteca y japonesa) con quiz interactivo y biblioteca.">
-  <meta name="author" content="ATKLA">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Mythicapp - Learn Mythology">
-  <meta property="og:description" content="SPA sin frameworks: explora mitos y personajes y pon a prueba tus conocimientos con un quiz.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tu-dominio-o-github-pages">
-  <meta property="og:image" content="https://tu-dominio-o-github-pages/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mythicapp - Learn Mythology">
-  <meta name="twitter:description" content="Explora mitos y personajes de 6 mitologías y juega un quiz.">
-  <meta name="twitter:image" content="https://tu-dominio-o-github-pages/og-image.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mythicapp - Aprende Mitología Jugando</title>
+  <meta name="description" content="Aprende mitología egipcia, griega, romana, vikinga, azteca y japonesa con quiz interactivo.">
+  
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Skip link -->
-  <a class="skip-link" href="#main">Saltar al contenido</a>
 
+<body>
   <!-- Header -->
-  <nav class="nav" role="navigation" aria-label="Principal">
+  <nav class="nav">
     <div class="nav-content">
-      <a href="#" class="logo" onclick="showSection('home')">
-        <div class="logo-icon" aria-label="Mythicapp">
-          <!-- LOGO: M con dos columnas y frontón -->
-          <svg viewBox="0 0 64 64" width="20" height="20" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#d4a574"/><stop offset="100%" stop-color="#bf8f54"/>
-              </linearGradient>
-            </defs>
-            <!-- Frontón -->
-            <path d="M10 22 L32 10 L54 22" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Columnas -->
-            <rect x="12" y="22" width="6" height="28" rx="2" fill="url(#g)"/>
-            <rect x="46" y="22" width="6" height="28" rx="2" fill="url(#g)"/>
-            <!-- Viga en V formando la M -->
-            <path d="M18 24 L32 42 L46 24" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <a href="#home" class="logo" onclick="showSection('home'); return false;">
+        <div class="logo-icon">
+          <img src="medusa.png" alt="Logo Mythicapp" class="logo-medusa" width="52" height="52">
         </div>
-        <div class="logo-text">Mythicapp</div>
+        <span class="logo-text">Mythicapp</span>
       </a>
-      <div class="nav-links">
-        <button class="nav-link active" data-section="home" aria-current="page">Inicio</button>
-        <button class="nav-link" data-section="library">Biblioteca</button>
-        <button class="nav-link" data-section="characters">Personajes</button>
-        <button class="nav-link" data-section="quiz">Quiz</button>
+      
+      <div class="nav-right">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menú">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+          <button class="nav-link active" data-section="home">Inicio</button>
+          <button class="nav-link" data-section="library">Biblioteca</button>
+          <button class="nav-link" data-section="characters">Personajes</button>
+          <button class="nav-link" data-section="quiz">Quiz</button>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Main -->
-  <main class="main" id="main" tabindex="-1">
+  <main class="main" id="main">
     <div class="container">
+      
       <!-- HOME -->
-      <section id="home" class="section" aria-labelledby="home-title">
+      <section id="home" class="section">
         <header class="hero">
-          <h1 class="display hero-title" id="home-title">Mythicapp</h1>
+          <div class="hero-image">
+            <img src="medusa.png" alt="Medusa" class="medusa-icon" width="280" height="280">
+          </div>
+          <h1 class="display hero-title" data-text="Mythicapp">Mythicapp</h1>
+          <p class="hero-tagline">¿Cuánto sabes de los antiguos dioses?</p>
           <p class="body hero-subtitle">
-            Descubre las civilizaciones más fascinantes a través de sus mitos y leyendas.
-            Aprende mitología egipcia, griega, romana, vikinga, azteca y japonesa.
+            15 preguntas desafiantes. 6 civilizaciones legendarias.<br>
+            Demuestra tu conocimiento sobre mitología.
           </p>
-          <div id="home-score" class="score-display-container" aria-live="polite"></div>
+          <div id="home-score" class="score-display-container"></div>
           <div class="hero-actions">
-            <button class="btn-primary" onclick="startQuiz()">Comenzar Quiz</button>
-            <button class="btn-secondary" onclick="showSection('library')">Explorar Biblioteca</button>
+            <button class="btn-primary btn-large" onclick="startQuiz()">
+              <span>Aceptar el desafío</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
           </div>
         </header>
-
-        <div class="cultures">
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('egipcia')" onkeydown="cardKey(event,()=>startQuiz('egipcia'))">
-            <span class="culture-icon">𓂀</span>
-            <h2 class="culture-name">Egipcia</h2>
-            <p class="culture-desc">Ra, Isis, Osiris y el Duat</p>
-          </div>
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('griega')" onkeydown="cardKey(event,()=>startQuiz('griega'))">
-            <span class="culture-icon">🏺</span>
-            <h2 class="culture-name">Griega</h2>
-            <p class="culture-desc">Olimpo, héroes y tragedias</p>
-          </div>
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('romana')" onkeydown="cardKey(event,()=>startQuiz('romana'))">
-            <span class="culture-icon">🏛️</span>
-            <h2 class="culture-name">Romana</h2>
-            <p class="culture-desc">Desde Rómulo a la Eneida</p>
-          </div>
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('vikinga')" onkeydown="cardKey(event,()=>startQuiz('vikinga'))">
-            <span class="culture-icon">⚔️</span>
-            <h2 class="culture-name">Vikinga</h2>
-            <p class="culture-desc">Yggdrasil, dioses y sagas</p>
-          </div>
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('azteca')" onkeydown="cardKey(event,()=>startQuiz('azteca'))">
-            <span class="culture-icon">🐍</span>
-            <h2 class="culture-name">Azteca</h2>
-            <p class="culture-desc">Quetzalcóatl, soles y Mictlán</p>
-          </div>
-          <div class="culture-card" role="button" tabindex="0" onclick="startQuiz('japonesa')" onkeydown="cardKey(event,()=>startQuiz('japonesa'))">
-            <span class="culture-icon">⛩️</span>
-            <h2 class="culture-name">Japonesa</h2>
-            <p class="culture-desc">Amaterasu, Susanoo y el Kojiki</p>
-          </div>
-        </div>
       </section>
 
       <!-- QUIZ -->
-      <section id="quiz" class="section" hidden aria-labelledby="quiz-title">
+      <section id="quiz" class="section" hidden>
         <div class="card">
-          <h2 class="headline" id="quiz-title" style="text-align:center;margin-bottom:12px;">Quiz</h2>
+          <h2 class="headline">Quiz de Mitología</h2>
           <div class="quiz-header">
             <div class="progress-container">
-              <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
               <div class="progress-text caption">
-                <span id="question-counter">Pregunta 1 de 12</span>
+                <span id="question-counter">Pregunta 1 de 15</span>
                 <span id="score-counter">Puntuación: 0</span>
               </div>
             </div>
           </div>
-          <div id="quiz-content" role="region" aria-live="polite"></div>
+          <div id="quiz-content"></div>
           <div class="quiz-actions">
             <button id="next-btn" class="btn-secondary" disabled>Siguiente</button>
           </div>
@@ -136,81 +106,71 @@
       </section>
 
       <!-- LIBRARY -->
-      <section id="library" class="section" hidden aria-labelledby="library-title">
+      <section id="library" class="section" hidden>
         <div class="card">
-          <h2 class="headline" id="library-title" style="text-align:center;margin-bottom:22px;">Biblioteca de Mitos</h2>
-
-          <div class="tabs" id="library-tabs" role="tablist" aria-label="Filtrar mitos por cultura">
-            <button class="tab" role="tab" aria-selected="true" tabindex="0" data-filter="todas">Todas</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="egipcia">Egipcia</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="griega">Griega</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="romana">Romana</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="vikinga">Vikinga</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="azteca">Azteca</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="japonesa">Japonesa</button>
+          <h2 class="headline">Biblioteca de Mitos</h2>
+          <div class="tabs" id="library-tabs">
+            <button class="tab" data-filter="todas">Todas</button>
+            <button class="tab" data-filter="egipcia">Egipcia</button>
+            <button class="tab" data-filter="griega">Griega</button>
+            <button class="tab" data-filter="romana">Romana</button>
+            <button class="tab" data-filter="vikinga">Vikinga</button>
+            <button class="tab" data-filter="azteca">Azteca</button>
+            <button class="tab" data-filter="japonesa">Japonesa</button>
           </div>
-
-          <label for="library-search" class="visually-hidden">Buscar mitos</label>
-          <input type="text" class="search-box" id="library-search" placeholder="Buscar mitos..." aria-label="Buscar mitos"/>
-
+          <input type="search" class="search-box" id="library-search" placeholder="Buscar mitos...">
           <div class="content-grid" id="myths-grid"></div>
-
-          <div class="sources">
-            <p class="caption">Fuentes:
-              <a href="https://www.theoi.com" target="_blank" rel="noopener noreferrer">Theoi</a>,
-              <a href="https://portalmitologia.com" target="_blank" rel="noopener noreferrer">Portal Mitología</a>,
-              <a href="https://mitologiasdelmundo.com" target="_blank" rel="noopener noreferrer">Mitologías del Mundo</a>,
-              <a href="https://mitologiagrecorromana.idoneos.com" target="_blank" rel="noopener noreferrer">Mitología Grecorromana</a>
+          <footer class="sources">
+            <p class="caption">Fuentes: 
+              <a href="https://www.theoi.com" target="_blank" rel="noopener">Theoi</a>, 
+              <a href="https://portalmitologia.com" target="_blank" rel="noopener">Portal Mitología</a>
             </p>
-          </div>
+          </footer>
         </div>
       </section>
 
       <!-- CHARACTERS -->
-      <section id="characters" class="section" hidden aria-labelledby="characters-title">
+      <section id="characters" class="section" hidden>
         <div class="card">
-          <h2 class="headline" id="characters-title" style="text-align:center;margin-bottom:22px;">Personajes Legendarios</h2>
-
-          <div class="tabs" id="characters-tabs" role="tablist" aria-label="Filtrar personajes por cultura">
-            <button class="tab" role="tab" aria-selected="true" tabindex="0" data-filter="todas">Todos</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="egipcia">Egipcios</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="griega">Griegos</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="romana">Romanos</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="vikinga">Vikingos</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="azteca">Aztecas</button>
-            <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="japonesa">Japoneses</button>
+          <h2 class="headline">Personajes Legendarios</h2>
+          <div class="tabs" id="characters-tabs">
+            <button class="tab" data-filter="todas">Todos</button>
+            <button class="tab" data-filter="egipcia">Egipcios</button>
+            <button class="tab" data-filter="griega">Griegos</button>
+            <button class="tab" data-filter="romana">Romanos</button>
+            <button class="tab" data-filter="vikinga">Vikingos</button>
+            <button class="tab" data-filter="azteca">Aztecas</button>
+            <button class="tab" data-filter="japonesa">Japoneses</button>
           </div>
-
-          <label for="characters-search" class="visually-hidden">Buscar personajes</label>
-          <input type="text" class="search-box" id="characters-search" placeholder="Buscar personajes..." aria-label="Buscar personajes"/>
-
+          <input type="search" class="search-box" id="characters-search" placeholder="Buscar personajes...">
           <div class="content-grid" id="characters-grid"></div>
         </div>
       </section>
 
       <!-- RESULTS -->
-      <section id="results" class="section" hidden aria-labelledby="results-title">
+      <section id="results" class="section" hidden>
         <div class="card">
           <div class="results">
-            <h2 class="headline" id="results-title" style="margin-bottom:22px;">¡Quiz Completado!</h2>
+            <h2 class="headline">¡Quiz Completado!</h2>
             <div id="results-content"></div>
           </div>
         </div>
       </section>
+      
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
       <p class="caption">
-        © <span id="year"></span> Mythicapp · Creado por
-        <a class="footer-link" href="https://github.com/ATKLA" target="_blank" rel="noopener noreferrer">ATKLA</a>
+        © <span id="year"></span> Mythicapp · Creado por 
+        <a class="footer-link" href="https://github.com/ATKLA" target="_blank" rel="noopener">ATKLA</a>
       </p>
     </div>
   </footer>
 
   <!-- JS -->
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
