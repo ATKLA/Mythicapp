@@ -1,6 +1,6 @@
 # Mythicapp
 Pagina sobre Mitología, pon tus conocimientos a prueba.
 (Estado actual)
-![captura de la web](Captura.png)
+![captura de la web](captura.png)
 (Primer borrador)
 ![Captura de la web](Captura.png)
