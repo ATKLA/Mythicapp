@@ -1387,11 +1387,26 @@ body::before {
     text-align: left;
     font-size: 16px;
     padding: 12px 16px;
-    min-height: 48px; /* MEJORA: Touch target */
+    min-height: 48px;
   }
   
   .content-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* CORRECCIÓN: Botones más pequeños en tablet */
+  .btn-primary {
+    padding: 14px 28px;
+    font-size: 17px;
+  }
+  
+  .btn-large {
+    padding: 16px 32px;
+    font-size: 18px;
+  }
+  
+  .card {
+    padding: 24px;
   }
   
   :root {
@@ -1426,9 +1441,19 @@ body::before {
     align-items: stretch;
   }
   
+  /* CORRECCIÓN CRÍTICA: Botones más pequeños y centrados */
   .btn-primary,
   .btn-secondary {
     width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .btn-large {
+    padding: 16px 28px;
+    font-size: 17px;
   }
   
   .nav-right {
@@ -1444,12 +1469,54 @@ body::before {
     height: 42px;
   }
   
+  /* CORRECCIÓN CRÍTICA: Card más compacto para que quepa todo */
   .card {
-    padding: 20px;
+    padding: 16px;
+    margin: 12px 0;
   }
   
+  /* CORRECCIÓN: Pregunta más pequeña */
   .question-text {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  /* CORRECCIÓN: Opciones más compactas */
+  .option {
+    padding: 12px 16px;
+    min-height: 52px;
+    font-size: 15px;
+  }
+  
+  .option-number {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  /* CORRECCIÓN: Quiz header más compacto */
+  .quiz-header {
+    margin-bottom: 16px;
+  }
+  
+  /* CORRECCIÓN: Reducir espacio entre opciones */
+  .options {
+    gap: 10px;
+  }
+  
+  /* CORRECCIÓN: Quiz actions siempre visibles */
+  .quiz-actions {
+    margin-top: 12px;
+    position: sticky;
+    bottom: 12px;
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur);
+    padding: 12px;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -16px;
+    border-top: 1px solid var(--border);
+    z-index: 10;
   }
   
   .tabs {
@@ -1463,6 +1530,17 @@ body::before {
   
   .score-display {
     font-size: 64px;
+  }
+  
+  /* CORRECCIÓN: Feedback más compacto */
+  .feedback {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .feedback-container {
+    min-height: 48px;
+    margin-top: 12px;
   }
 }
 
@@ -1486,11 +1564,23 @@ body::before {
   }
   
   .card {
-    padding: 16px;
+    padding: 14px;
   }
   
   .question-text {
-    font-size: 18px;
+    font-size: 17px;
+  }
+  
+  .option {
+    padding: 10px 14px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+  
+  .option-number {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
   }
   
   .tab {
@@ -1498,15 +1588,15 @@ body::before {
     font-size: 12px;
   }
   
-  .option-button {
-    padding: 12px 16px;
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
     font-size: 15px;
   }
   
-  .btn-primary,
-  .btn-secondary {
-    padding: 14px 20px;
-    font-size: 15px;
+  .btn-large {
+    padding: 14px 24px;
+    font-size: 16px;
   }
   
   .score-display {
@@ -1543,7 +1633,7 @@ body::before {
   }
   
   .card {
-    padding: 20px;
+    padding: 16px;
   }
   
   .nav {
@@ -1553,20 +1643,42 @@ body::before {
   :root {
     --nav-h: 50px;
   }
+  
+  /* CORRECCIÓN: Quiz más compacto en landscape */
+  .question-text {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+  
+  .option {
+    padding: 10px 14px;
+    min-height: 44px;
+  }
+  
+  .options {
+    gap: 8px;
+  }
+  
+  .quiz-header {
+    margin-bottom: 12px;
+  }
+  
+  .quiz-actions {
+    margin-top: 10px;
+  }
 }
 
 /* Mejoras táctiles para todos los móviles */
 @media (hover: none) and (pointer: coarse) {
   .btn-primary,
   .btn-secondary,
-  .option-button,
+  .option,
   .nav-link,
   .tab {
-    min-height: 44px; /* Apple HIG touch target */
     -webkit-tap-highlight-color: transparent;
   }
   
-  .option-button:active {
+  .option:active {
     transform: scale(0.98);
   }
   
