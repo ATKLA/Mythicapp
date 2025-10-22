@@ -1466,6 +1466,116 @@ body::before {
   }
 }
 
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+  .display {
+    font-size: 36px;
+  }
+  
+  .medusa-icon {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .hero-tagline {
+    font-size: 18px;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .question-text {
+    font-size: 18px;
+  }
+  
+  .tab {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .option-button {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  
+  .score-display {
+    font-size: 56px;
+  }
+}
+
+/* Landscape en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    padding: 20px 0;
+  }
+  
+  .medusa-icon {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .display {
+    font-size: 36px;
+  }
+  
+  .hero-tagline {
+    font-size: 18px;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  .hero-actions {
+    margin-top: 16px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .nav {
+    height: 50px;
+  }
+  
+  :root {
+    --nav-h: 50px;
+  }
+}
+
+/* Mejoras táctiles para todos los móviles */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary,
+  .btn-secondary,
+  .option-button,
+  .nav-link,
+  .tab {
+    min-height: 44px; /* Apple HIG touch target */
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .option-button:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: translateY(2px);
+  }
+}
+
 /* =========================
    UTILIDADES
    ========================= */
