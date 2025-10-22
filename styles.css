@@ -1395,14 +1395,10 @@ body::before {
   }
   
   /* CORRECCIÓN: Botones más pequeños en tablet */
-  .btn-primary {
-    padding: 14px 28px;
-    font-size: 17px;
-  }
-  
-  .btn-large {
-    padding: 16px 32px;
-    font-size: 18px;
+  .btn-primary,
+  .btn-primary.btn-large {
+    padding: 14px 28px !important;
+    font-size: 17px !important;
   }
   
   .card {
@@ -1443,17 +1439,20 @@ body::before {
   
   /* CORRECCIÓN CRÍTICA: Botones más pequeños y centrados */
   .btn-primary,
-  .btn-secondary {
+  .btn-secondary,
+  .btn-primary.btn-large,
+  .btn-secondary.btn-large {
     width: 100%;
-    padding: 14px 24px;
-    font-size: 16px;
+    padding: 14px 24px !important;
+    font-size: 16px !important;
     text-align: center;
     justify-content: center;
   }
   
-  .btn-large {
-    padding: 16px 28px;
-    font-size: 17px;
+  /* Asegurar que btn-large tampoco se haga muy grande */
+  .hero-actions .btn-large {
+    padding: 14px 24px !important;
+    font-size: 16px !important;
   }
   
   .nav-right {
@@ -1589,14 +1588,16 @@ body::before {
   }
   
   .btn-primary,
-  .btn-secondary {
-    padding: 12px 20px;
-    font-size: 15px;
+  .btn-secondary,
+  .btn-primary.btn-large,
+  .btn-secondary.btn-large {
+    padding: 12px 20px !important;
+    font-size: 15px !important;
   }
   
-  .btn-large {
-    padding: 14px 24px;
-    font-size: 16px;
+  .hero-actions .btn-large {
+    padding: 12px 20px !important;
+    font-size: 15px !important;
   }
   
   .score-display {
