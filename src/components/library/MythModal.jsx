@@ -26,7 +26,7 @@ export function MythModal({ myth, onClose, onSelect }) {
   useBodyScrollLock()
   useFocusTrap(boxRef)
 
-  // Reset scroll + focus when navigating to a related myth
+  
   useEffect(() => {
     if (bgRef.current) bgRef.current.scrollTop = 0
     boxRef.current?.focus()
@@ -48,11 +48,8 @@ export function MythModal({ myth, onClose, onSelect }) {
         className="relative w-full max-w-[760px] bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.7)] outline-none"
         style={{ animation: 'modalIn 0.4s var(--ease-out) both' }}
       >
-        {/* Colour bar */}
-        <div className="h-1 rounded-t-2xl" style={{ background: color }} />
-
-        {/* Close */}
-        <button
+<div className="h-1 rounded-t-2xl" style={{ background: color }} />
+<button
           onClick={onClose}
           aria-label="Cerrar"
           className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[var(--card-hi)] border border-[var(--border)] text-[var(--text-2)] hover:text-[var(--gold)] hover:border-[var(--border-2)] hover:rotate-90 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-2"
@@ -61,8 +58,7 @@ export function MythModal({ myth, onClose, onSelect }) {
         </button>
 
         <div className="p-8 max-sm:p-6 pr-16 max-sm:pr-14">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2 font-mono text-[0.78rem] tracking-[0.22em] uppercase mb-3" style={{ color }}>
+<div className="flex items-center gap-2 font-mono text-[0.78rem] tracking-[0.22em] uppercase mb-3" style={{ color }}>
             <span aria-hidden="true">{CIV_SIGILS[myth.era]}</span>
             {meta.fullName} · {meta.epoch}
           </div>
@@ -83,9 +79,7 @@ export function MythModal({ myth, onClose, onSelect }) {
             <span className="not-italic font-mono text-[0.75rem] tracking-[0.18em] uppercase text-[var(--text-2)] mr-2">Fuente</span>
             {myth.ref}
           </p>
-
-          {/* Related myths */}
-          {related.length > 0 && (
+{related.length > 0 && (
             <div className="mt-8 pt-6 border-t border-[var(--border)]">
               <h3 className="font-mono text-[0.75rem] tracking-[0.22em] uppercase text-[var(--text-3)] mb-4">
                 Otros mitos de la {meta.fullName}

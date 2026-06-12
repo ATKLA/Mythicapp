@@ -48,8 +48,8 @@ export function QuizGame({ config, onComplete, onQuit }) {
 
   function next() {
     if (isLast) {
-      // answers state is updated in the same render as answered; compute
-      // final score directly from the accumulated answers array.
+      
+      
       const finalAnswers = [...answers]
       const finalScore = finalAnswers.filter(a => a.ok).length
       onComplete({ score: finalScore, total: questions.length, answers: finalAnswers })
@@ -69,8 +69,7 @@ export function QuizGame({ config, onComplete, onQuit }) {
         className="w-full max-w-[700px] bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 max-sm:p-6"
         style={{ '--cc': color }}
       >
-        {/* Progress bar */}
-        <div className="flex items-center gap-4 mb-6">
+<div className="flex items-center gap-4 mb-6">
           <div
             className="flex-1 h-[3px] bg-[var(--border)] rounded-full overflow-hidden"
             role="progressbar"
@@ -89,9 +88,7 @@ export function QuizGame({ config, onComplete, onQuit }) {
             / {questions.length}
           </span>
         </div>
-
-        {/* Question meta */}
-        <div className="flex items-center justify-between mb-1">
+<div className="flex items-center justify-between mb-1">
           <span className="font-mono text-sm tracking-[0.1em] uppercase text-[var(--text-3)]">
             Pregunta {index + 1} de {questions.length}
           </span>
@@ -103,14 +100,10 @@ export function QuizGame({ config, onComplete, onQuit }) {
           <span aria-hidden="true">{CIV_SIGILS[q.era]}</span>
           {CIV_META[q.era].fullName}
         </span>
-
-        {/* Question */}
-        <p className="font-body text-[clamp(1.1rem,2.5vw,1.35rem)] font-medium text-[var(--text)] leading-snug mb-7">
+<p className="font-body text-[clamp(1.1rem,2.5vw,1.35rem)] font-medium text-[var(--text)] leading-snug mb-7">
           {q.texto}
         </p>
-
-        {/* Options */}
-        <div className="flex flex-col gap-3 mb-7" role="group" aria-label="Opciones de respuesta">
+<div className="flex flex-col gap-3 mb-7" role="group" aria-label="Opciones de respuesta">
           {q.opciones.map((opt, i) => {
             const isCorrect  = answered && i === q.correcta
             const isWrong    = answered && i === selected && i !== q.correcta
@@ -150,9 +143,7 @@ export function QuizGame({ config, onComplete, onQuit }) {
             )
           })}
         </div>
-
-        {/* Hint after answering */}
-        {answered && (
+{answered && (
           <div
             className="font-body text-sm text-[var(--text-2)] italic px-4 py-3.5 rounded-xl mb-6 leading-relaxed border-l-[3px]"
             style={{ background: 'var(--card-hi)', borderColor: color, animation: 'fadeUp 0.4s var(--ease-out) both' }}
@@ -164,9 +155,7 @@ export function QuizGame({ config, onComplete, onQuit }) {
             {q.pista}
           </div>
         )}
-
-        {/* Controls */}
-        <div className="flex items-center justify-between gap-3 flex-wrap">
+<div className="flex items-center justify-between gap-3 flex-wrap">
           <button
             onClick={onQuit}
             className="font-mono text-[0.78rem] tracking-[0.14em] uppercase text-[var(--text-3)] hover:text-[var(--wrong)] transition-colors duration-200 py-2 focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-2 focus-visible:rounded-lg"

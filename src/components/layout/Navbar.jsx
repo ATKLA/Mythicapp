@@ -48,9 +48,7 @@ export function Navbar({ section, theme, onNavigate, onToggleTheme }) {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--surface)_85%,transparent)] backdrop-blur-xl">
       <div className="max-w-[1180px] mx-auto px-6 flex items-center justify-between h-16">
-
-        {/* Logo */}
-        <button
+<button
           onClick={() => go('home')}
           aria-label="Mythicapp — Inicio"
           className="flex items-center gap-2.5 opacity-100 hover:opacity-75 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-4 focus-visible:rounded-lg"
@@ -60,9 +58,7 @@ export function Navbar({ section, theme, onNavigate, onToggleTheme }) {
             <span className="text-[var(--text)]">MYTHIC</span><span className="text-[var(--gold)]">APP</span>
           </span>
         </button>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-0.5" aria-label="Navegación principal">
+<nav className="hidden md:flex items-center gap-0.5" aria-label="Navegación principal">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
@@ -83,9 +79,7 @@ export function Navbar({ section, theme, onNavigate, onToggleTheme }) {
             </button>
           ))}
         </nav>
-
-        {/* Right controls */}
-        <div className="flex items-center gap-2">
+<div className="flex items-center gap-2">
           <button
             onClick={onToggleTheme}
             aria-label={isDark ? 'Activar tema claro' : 'Activar tema oscuro'}
@@ -93,9 +87,7 @@ export function Navbar({ section, theme, onNavigate, onToggleTheme }) {
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
-
-          {/* Hamburger */}
-          <button
+<button
             onClick={() => setMenuOpen(o => !o)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -106,9 +98,7 @@ export function Navbar({ section, theme, onNavigate, onToggleTheme }) {
           </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
+{menuOpen && (
         <nav
           id="mobile-menu"
           aria-label="Navegación principal"

@@ -11,7 +11,7 @@ import { QuizGame }           from './components/quiz/QuizGame'
 import { ResultsView }        from './components/quiz/ResultsView'
 
 export default function App() {
-  // ── Theme ──────────────────────────────────────────────────────────────
+  
   const [theme, setTheme] = useLocalStorage('mythicapp_theme', 'dark')
   const toggleTheme = useCallback(() => {
     setTheme(t => {
@@ -21,10 +21,10 @@ export default function App() {
     })
   }, [setTheme])
 
-  // Apply stored theme on first paint
+  
   useState(() => { document.documentElement.setAttribute('data-theme', theme) })
 
-  // ── Navigation ─────────────────────────────────────────────────────────
+  
   const [section, setSection] = useState('home')
   const [filter,  setFilter]  = useState('todas')
   const [search,  setSearch]  = useState('')
@@ -43,11 +43,11 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
-  // ── Modal ──────────────────────────────────────────────────────────────
+  
   const [openMyth, setOpenMyth] = useState(null)
 
-  // ── Quiz ───────────────────────────────────────────────────────────────
-  const [quizState,  setQuizState]  = useState('setup')   // setup | game | results
+  
+  const [quizState,  setQuizState]  = useState('setup')   
   const [quizConfig, setQuizConfig] = useState(null)
   const [quizResult, setQuizResult] = useState(null)
 

@@ -15,139 +15,54 @@ export function HeroSection({ onNavigate }) {
 
       <div className="relative z-[1] flex flex-col items-center text-center px-6 w-full">
 
-        {/*
-          Medusa image wrapper.
-          The glow sits on a separate <div> BEHIND the image, sized to the
-          top 55% only (face + hair). This way the glow never touches the
-          bottom fade zone, eliminating the yellow smear entirely.
-          No drop-shadow filter on the <img> — that was spreading yellow
-          through every semi-transparent pixel in the bottom fade.
-        */}
-        <div
-          style={{
-            position:   'relative',
-            width:      'clamp(200px, 30vw, 300px)',
-            flexShrink: 0,
-          }}
-        >
-          {/* Glow only behind the face — top 55% of the image area */}
+        <div className="relative flex-shrink-0 w-[clamp(200px,30vw,300px)]">
           <div
             aria-hidden="true"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-[55%] pointer-events-none z-0"
             style={{
-              position:     'absolute',
-              top:          0,
-              left:         '50%',
-              transform:    'translateX(-50%)',
-              width:        '90%',
-              height:       '55%',
               background:   'radial-gradient(ellipse 80% 80% at 50% 60%, rgba(255,216,77,0.22) 0%, transparent 70%)',
               mixBlendMode: 'screen',
-              pointerEvents:'none',
-              zIndex:       0,
             }}
           />
-
           <img
             src="/medusa.png"
             alt="Medusa — emblema de Mythicapp"
-            className="medusa-img"
-            style={{
-              position:   'relative',
-              zIndex:     1,
-              width:      '100%',
-              height:     'auto',
-              display:    'block',
-              animation:  'scaleIn 1.1s var(--ease-out) both',
-            }}
+            className="medusa-img relative z-[1] w-full h-auto block animate-[scaleIn_1.1s_var(--ease-out)_both]"
           />
         </div>
 
-        {/* Wordmark */}
         <p
           aria-hidden="true"
-          style={{
-            fontFamily:    'var(--font-display)',
-            fontSize:      'clamp(3.8rem, 11vw, 8rem)',
-            letterSpacing: '0.12em',
-            lineHeight:    1,
-            marginTop:     '-0.08em',
-            animation:     'fadeUp 0.85s 0.12s var(--ease-out) both',
-          }}
+          className="font-display text-[clamp(3.8rem,11vw,8rem)] tracking-[0.12em] leading-none -mt-[0.08em] animate-[fadeUp_0.85s_0.12s_var(--ease-out)_both]"
         >
-          <span style={{ color: 'var(--text)' }}>MYTHIC</span>
-          <span style={{ color: 'var(--gold)', textShadow: '0 0 40px rgba(255,216,77,0.4)' }}>APP</span>
+          <span className="text-[var(--text)]">MYTHIC</span>
+          <span className="text-[var(--gold)] [text-shadow:0_0_40px_rgba(255,216,77,0.4)]">APP</span>
         </p>
 
-        {/* Slogan */}
         <h1
           id="hero-title"
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize:   'clamp(1.15rem, 2.4vw, 1.4rem)',
-            fontWeight: 400,
-            lineHeight: 1.55,
-            color:      'var(--text-2)',
-            marginTop:  '1.25rem',
-            maxWidth:   '34ch',
-            animation:  'fadeUp 0.85s 0.24s var(--ease-out) both',
-          }}
+          className="font-body text-[clamp(1.15rem,2.4vw,1.4rem)] font-normal leading-[1.55] text-[var(--text-2)] mt-5 max-w-[34ch] animate-[fadeUp_0.85s_0.24s_var(--ease-out)_both]"
         >
           Todo empezó con un mito.<br />
-          <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>¿Eres capaz de recordarlos?</em>
+          <em className="not-italic text-[var(--gold)]">¿Eres capaz de recordarlos?</em>
         </h1>
 
-        {/* Stats */}
         <p
           aria-hidden="true"
-          style={{
-            fontFamily:    'var(--font-mono)',
-            fontSize:      '0.8rem',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color:         'var(--text-3)',
-            marginTop:     '0.6rem',
-            animation:     'fadeUp 0.85s 0.33s var(--ease-out) both',
-          }}
+          className="font-mono text-[0.8rem] tracking-[0.18em] uppercase text-[var(--text-3)] mt-2.5 animate-[fadeUp_0.85s_0.33s_var(--ease-out)_both]"
         >
           {QUESTION_COUNT} preguntas · {MYTH_COUNT} mitos · 4 civilizaciones
         </p>
 
-        {/* CTA */}
-        <div style={{ marginTop: '2rem', animation: 'fadeUp 0.85s 0.42s var(--ease-out) both' }}>
+        <div className="mt-8 animate-[fadeUp_0.85s_0.42s_var(--ease-out)_both]">
           <button
             onClick={() => onNavigate('quiz')}
-            style={{
-              fontFamily:   'var(--font-body)',
-              fontSize:     '1rem',
-              fontWeight:   600,
-              padding:      '0.875rem 2rem',
-              minHeight:    '48px',
-              background:   'var(--gold)',
-              color:        '#0B0911',
-              border:       'none',
-              borderRadius: '999px',
-              cursor:       'pointer',
-              transition:   'all 0.2s var(--ease)',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = 'var(--gold-2)'
-              e.currentTarget.style.transform  = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow  = '0 0 32px rgba(255,216,77,0.45)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'var(--gold)'
-              e.currentTarget.style.transform  = ''
-              e.currentTarget.style.boxShadow  = ''
-            }}
-            onFocus={e => {
-              e.currentTarget.style.outline       = '2px solid var(--gold)'
-              e.currentTarget.style.outlineOffset = '4px'
-            }}
-            onBlur={e => { e.currentTarget.style.outline = 'none' }}
+            className="font-body font-semibold text-base px-8 py-3.5 min-h-[48px] bg-[var(--gold)] text-[#0B0911] border-none rounded-full cursor-pointer transition-all duration-200 hover:bg-[var(--gold-2)] hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(255,216,77,0.45)] focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-4"
           >
             Aceptar el desafío
           </button>
         </div>
+
       </div>
     </section>
   )

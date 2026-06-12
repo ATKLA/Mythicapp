@@ -14,12 +14,12 @@ export function GoldenDust() {
 
     const make = () => ({
       x:     Math.random() * (W || 800),
-      y:     Math.random() * (H || 600),  // initial spawn spread across full height
+      y:     Math.random() * (H || 600),  
       r:     Math.random() * 1.2 + 0.3,
       vy:    Math.random() * 0.22 + 0.05,
       vx:    (Math.random() - 0.5) * 0.12,
-      // Each particle has its own opacity cycle driven by y position only
-      // No life counter that resets mid-screen — eliminates flash on respawn
+      
+      
     })
 
     const resize = () => {
@@ -41,12 +41,12 @@ export function GoldenDust() {
         p.y += p.vy
         p.x += p.vx
 
-        // Wrap horizontally
+        
         if (p.x < 0) p.x = W
         if (p.x > W) p.x = 0
 
-        // When particle exits bottom, respawn at TOP with x=0 alpha
-        // so there is never a sudden pop at a random position
+        
+        
         if (p.y > H) {
           p.x  = Math.random() * W
           p.y  = 0
@@ -55,9 +55,9 @@ export function GoldenDust() {
           p.r  = Math.random() * 0.9 + 0.2
         }
 
-        // Alpha driven purely by y position:
-        // Fade in over top 8% → full opacity 8–75% → fade out bottom 25%
-        // This is continuous and smooth — no discrete life cycle, no flash
+        
+        
+        
         const yRatio = p.y / H
         const alpha =
           yRatio < 0.08 ? (yRatio / 0.08) * 0.55

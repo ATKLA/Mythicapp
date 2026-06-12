@@ -35,9 +35,7 @@ export function QuizSetup({ onStart }) {
         <p className="font-body text-base text-[var(--text-2)] mb-8 leading-relaxed">
           Elige civilizaciones y cantidad de preguntas. El oráculo barajará el resto.
         </p>
-
-        {/* Civilizations */}
-        <div className="mb-8">
+<div className="mb-8">
           <span id="civs-label" className="block font-mono text-[0.85rem] tracking-[0.14em] uppercase text-[var(--text-3)] mb-3">
             Civilizaciones
           </span>
@@ -70,9 +68,7 @@ export function QuizSetup({ onStart }) {
             })}
           </div>
         </div>
-
-        {/* Length */}
-        <div className="mb-8">
+<div className="mb-8">
           <span id="len-label" className="block font-mono text-[0.85rem] tracking-[0.14em] uppercase text-[var(--text-3)] mb-3">
             Preguntas
           </span>

@@ -32,8 +32,7 @@ export function MythCard({ myth, onClick, delay = 0 }) {
         animation: `fadeUp 0.5s ${delay}ms var(--ease-out) both`,
       }}
     >
-      {/* Left accent bar */}
-      <div
+<div
         className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{ background: color }}
         aria-hidden="true"

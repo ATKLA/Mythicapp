@@ -41,8 +41,7 @@ export function ResultsView({ result, onRestart, onHome }) {
       aria-labelledby="results-title"
       className="flex-1 max-w-[720px] w-full mx-auto px-6 py-12"
     >
-      {/* Score hero */}
-      <div className="relative bg-[var(--card)] border border-[var(--border)] rounded-2xl p-10 text-center overflow-hidden mb-6">
+<div className="relative bg-[var(--card)] border border-[var(--border)] rounded-2xl p-10 text-center overflow-hidden mb-6">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(255,216,77,0.08),transparent_65%)] pointer-events-none" aria-hidden="true" />
         <p className="font-mono text-[0.85rem] tracking-[0.2em] uppercase text-[var(--gold)] opacity-85 mb-4 relative">
           — Resultado del oráculo
@@ -60,9 +59,7 @@ export function ResultsView({ result, onRestart, onHome }) {
           {getMessage(pct).toUpperCase()}
         </h2>
       </div>
-
-      {/* Per-civ breakdown */}
-      {Object.keys(byCiv).length > 1 && (
+{Object.keys(byCiv).length > 1 && (
         <div className="grid gap-3 grid-cols-2 sm:grid-cols-4 mb-6">
           {Object.entries(byCiv).map(([id, stats]) => {
             const color = CIV_COLORS[id]
@@ -81,9 +78,7 @@ export function ResultsView({ result, onRestart, onHome }) {
           })}
         </div>
       )}
-
-      {/* Answer review */}
-      <div className="flex flex-col gap-3 mb-8">
+<div className="flex flex-col gap-3 mb-8">
         <h3 className="font-mono text-[0.78rem] tracking-[0.22em] uppercase text-[var(--text-3)] mb-1">
           Repaso de respuestas
         </h3>
@@ -116,9 +111,7 @@ export function ResultsView({ result, onRestart, onHome }) {
           </div>
         ))}
       </div>
-
-      {/* Actions */}
-      <div className="flex gap-3 justify-center flex-wrap">
+<div className="flex gap-3 justify-center flex-wrap">
         <button
           onClick={onRestart}
           className="bg-[var(--gold)] text-[#0B0911] font-body font-semibold text-sm px-7 py-3.5 rounded-full transition-all duration-200 hover:bg-[var(--gold-2)] hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(255,216,77,0.4)] focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-4"
