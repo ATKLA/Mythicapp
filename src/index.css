@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ── Design tokens ───────────────────────────────────────────────────────── */
+:root {
+  --gold:      #FFD84D;
+  --gold-2:    #FFE17A;
+  --gold-dim:  rgba(255,216,77,0.08);
+  --ink:       #08070A;
+  --surface:   #0B0911;
+  --card:      #14111B;
+  --card-hi:   #1A1622;
+  --border:    rgba(255,216,77,0.13);
+  --border-2:  rgba(255,216,77,0.28);
+  --text:      #EDE5D0;
+  --text-2:    #AFA691;
+  --text-3:    #8A8071;
+  --correct:   #5DBC85;
+  --wrong:     #D86A52;
+
+  /* civ accents — dark theme */
+  --civ-egipcia: #FFD84D;
+  --civ-griega:  #7BA7D9;
+  --civ-romana:  #D4836A;
+  --civ-vikinga: #6DAE8B;
+
+  /* font aliases used inline */
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease:     cubic-bezier(0.22,1,0.36,1);
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+}
+
+[data-theme="light"] {
+  --surface:  #FDFAF0;
+  --card:     #F6F1DE;
+  --card-hi:  #EFE8D0;
+  --border:   rgba(110,75,30,0.18);
+  --border-2: rgba(110,75,30,0.38);
+  --gold:     #9B6E1F;
+  --gold-2:   #B7872E;
+  --gold-dim: rgba(155,110,31,0.1);
+  --text:     #2D1F0E;
+  --text-2:   #5F4B2E;
+  --text-3:   #73603F;
+
+  --civ-egipcia: #856600;
+  --civ-griega:  #3D6FA8;
+  --civ-romana:  #A8482E;
+  --civ-vikinga: #2E7050;
+}
+
+/* ── Reset extras ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; color-scheme: dark light; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection { background: var(--gold); color: var(--ink); }
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--card-hi); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-2); }
+
+/* ── Skip link ───────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute; top: -100px; left: 16px;
+  background: var(--gold); color: var(--ink);
+  padding: 0.5rem 1rem; border-radius: 8px; z-index: 1000;
+  font-family: var(--font-mono); font-size: 0.8rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; transition: top 0.2s;
+}
+.skip-link:focus { top: 16px; }
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Card hover accent (CSS custom property driven by JS) ───────────────── */
+.myth-card:hover  { border-color: var(--cc, var(--border-2)); }
+.char-card:hover  { border-color: var(--cc, var(--border-2)); }
+
+/* ── Quiz answer states ──────────────────────────────────────────────────── */
+.opt-correct { border-color: var(--correct) !important; background: color-mix(in oklab, var(--correct) 8%, transparent) !important; }
+.opt-wrong   { border-color: var(--wrong) !important;   background: color-mix(in oklab, var(--wrong) 8%, transparent) !important; }
+
+/* ── Entrance animations ─────────────────────────────────────────────────── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+@keyframes scaleIn  { from { opacity:0; transform:scale(0.88) }       to { opacity:1; transform:scale(1) } }
+@keyframes modalIn  { from { opacity:0; transform:translateY(20px) scale(0.98) } to { opacity:1; transform:none } }
+@keyframes overlayIn{ from { opacity:0 } to { opacity:1 } }
+@keyframes shake    { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+@keyframes pulseOk  { 0%,100%{transform:scale(1)} 50%{transform:scale(1.015)} }
+
+/* ── Custom font utilities for Tailwind v4 ──────────────────────────────── */
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-body    { font-family: var(--font-body); }
+  .font-mono    { font-family: var(--font-mono); }
+}
+
+/* ── Medusa image blend mode by theme ───────────────────────────────────── */
+/* Dark theme: image has dark semi-transparent pixels that blend into dark bg */
+.medusa-img {
+  mix-blend-mode: normal;
+}
+
+/* Light theme: multiply makes the remaining grey-ish semi-transparent pixels
+   blend into the light background instead of showing as a faded smear */
+[data-theme="light"] .medusa-img {
+  mix-blend-mode: multiply;
+}
